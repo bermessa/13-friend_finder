@@ -1,0 +1,49 @@
+  .home {
+    background-color: #91cee2;
+    margin-top: 70px;
+    color: #52575a;
+  }
+
+  .header {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 46px;
+    font-weight: bolder;
+    color: black;
+  }
+
+  .intro {
+    font-size: 18px;
+  }
+
+  #home {
+    text-align: center;
+    border: 4px solid #f7ed53;
+    padding: 20px;
+  }
+
+
+  .survey {
+    background-color: #f0a790;
+    margin-top: 70px;
+    color: #52575a;
+  }
+
+  #survey {
+    border: 4px solid #f7ef42;
+    padding: 20px;
+  }
+
+  #link {
+    text-align: right;
+  }
+
+  a {
+    color: #52575a;
+  }
+
+  .modal-body {
+    text-align: center;
+    font-size: 46px;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <title>Friend Finder</title>
+</head>
+
+<body class="survey">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-1"></div>
+
+            <div class="col-md-10">
+
+                <div class="panel panel-default" id="survey">
+                    <div class="panel-body">
+
+
+                        <div id="link">
+                            <a href="/api/friends" target="_blank">API Friends List</a> | <a href="https://github.com/bermessa/13-friend_finder" target="_blank">GitHub Repo</a>
+                        </div>
+
+
+                        <div class="row">
+                            <form id="surveyQuestions">
+
+                                <h2><strong>Survey Questions</strong></h2>
+                                <h4>1 = Strongly Disagree, 5 = Strongly Agree</h4>
+                                <h5>*All fields required</h5>
+                                <br><br>
+
+                                <label>Name</label><br>
+                                <input type="text" class="form-control" id="name" aria-describedby="basic-addon1">
+                                <br>
+
+                                <label>Link to Photo Image</label><br>
+                                <input type="text" class="form-control" id="image" aria-describedby="basic-addon1">
+                                <br>
+
+
+                                <label>Your mind is always buzzing with unexplored ideas and plans.</label><br>
+                                <select class="form-control" id="Q0">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+                                <label>Generally speaking, you rely more on your experience than your imagination.</label><br>
+                                <select class="form-control" id="Q1">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+                                <label>You find it easy to stay relaxed and focused even when there is some pressure.</label><br>
+                                <select class="form-control" id="Q2">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+
+                                <label>You rarely do something just out of sheer curiosity.</label><br>
+                                <select class="form-control" id="Q3">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+                                <label>People can rarely upset you.</label><br>
+                                <select class="form-control" id="Q4">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+                                <label>It is often difficult for you to relate to other people’s feelings.</label><br>
+                                <select class="form-control" id="Q5">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+                                <label>In a discussion, truth should be more important than people’s sensitivities.</label><br>
+                                <select class="form-control" id="Q6">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+                                <label>You rarely get carried away by fantasies and ideas.</label><br>
+                                <select class="form-control" id="Q7">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+                                <label>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</label><br>
+                                <select class="form-control" id="Q8">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                                <br><br>
+
+                                <label>You feel more energetic after spending time with a group of people.</label><br>
+                                <select class="form-control" id="Q9">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+
+                                <br><br>
+                                <button type="button" class="btn btn-default" id="searchButton" data-toggle="modal" data-target="#myModal">Search</button>
+
+                            </form>
+
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Best Match Compatibility</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div id="bestMatchName"></div>
+                                            <img id="bestMatchImage" src="" width="250px" height="250px">
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $("#searchButton").on("click", function(event) {
+            event.preventDefault();
+
+            var newFriend = {
+                name: $("#name").val().trim(),
+                image: $("#image").val().trim(),
+                scores: [$("#Q0").val(), $("#Q1").val(), $("#Q2").val(), $("#Q3").val(), $("#Q4").val(), $("#Q5").val(), $("#Q6").val(), $("#Q7").val(), $("#Q8").val(), $("#Q9").val()]
+            };
+
+            $.post("/api/friends", { data: JSON.stringify(newFriend) })
+                .done(function(data) {
+                    console.log(data);
+                    $("#bestMatchName").text(data.name);
+                    $("#bestMatchImage").attr("src", data.image);
+                });
+
+            $("#surveyQuestions").trigger("reset");
+
+        });
+    </script>
+
+</body>
+
+
+</html>
